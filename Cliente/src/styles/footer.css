@@ -1,0 +1,47 @@
+.footer {
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    margin-top: 50px;
+    color: gray;
+    font-size: small;
+    background-color:#242424;
+    box-shadow: -1px -1px 0px 0px rgba(0,0,0,.2);
+}
+
+a {
+    color: gray;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.p {
+    color: white;
+}
+
+img {
+    margin-right: 10px;
+}
+
+.col-izq {
+    text-align: left;
+    left: 150px;
+}
+
+.text{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.col-der {
+    text-align: right;
+    right: 200px;
+}
+
+.rrss-logo {
+    font-size: 16px;
+	padding-right: 30px;
+}
