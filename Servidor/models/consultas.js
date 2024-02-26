@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       end: DataTypes.DATE,
       id_usuario: DataTypes.INTEGER,
       id_paciente: DataTypes.INTEGER,
-      rut_paciente: DataTypes.BIGINT,
+      rut_paciente: DataTypes.STRING,
       tipo: DataTypes.STRING,
       fecha: DataTypes.DATEONLY,
       hora: DataTypes.TIME,

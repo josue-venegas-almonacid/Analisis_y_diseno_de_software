@@ -10,6 +10,7 @@ function Register(props) {
     const [number, setNumber] = useState('');
     const [location, setLocation] = useState('');
     const [estado, setEstado] = useState('');
+    const [role, setRole] = useState('user');
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -31,9 +32,14 @@ function Register(props) {
         setLocation(e.target.value);
     }
 
+    const handleRoleChange = (e) => {
+        setRole(e.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/auth/register', {
+        const endpoint = role === 'admin' ? 'registerAdmin' : 'register';
+        axios.post('http://localhost:3000/auth/'+endpoint, {
             email: email,
             contraseña: pass,
             nombre: name,
@@ -77,9 +83,31 @@ function Register(props) {
             <Form.Group>              
                 <Form.Label>Dirección</Form.Label>
                 <Form.Control onChange={handleLocation} type="text" placeholder="Ingrese su dirección. Ej: Pasaje 1234, Comuna, Región" />
-            </Form.Group>         
-
-            <button onClick={handleSubmit} className="btnSubmit" type="submit">Crear cuenta</button>
+            </Form.Group>    
+            
+            <Form.Group>              
+                <Form.Label>Rol</Form.Label>
+                <div>
+                    <Form.Check
+                        type="radio"
+                        label="Usuario"
+                        name="role"
+                        value="user"
+                        checked={role === 'user'}
+                        onChange={handleRoleChange}
+                    />
+                    <Form.Check
+                        type="radio"
+                        label="Administrador"
+                        name="role"
+                        value="admin"
+                        checked={role === 'admin'}
+                        onChange={handleRoleChange}
+                    />
+                </div>
+            </Form.Group>
+            
+            <button onClick={handleSubmit} className="btnSubmit" type="submit">Crear usuario</button>
         </Form>
     );
 }

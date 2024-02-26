@@ -37,7 +37,7 @@ module.exports = {
         },
       },
       rut_paciente: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       tipo: {
         type: Sequelize.STRING,

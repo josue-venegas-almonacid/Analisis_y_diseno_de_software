@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   pacientes.init(
     {
-      rut: DataTypes.BIGINT,
+      rut: DataTypes.STRING,
       id_usuario: DataTypes.INTEGER,
       nombre: DataTypes.STRING,
       fecha_nacimiento: DataTypes.DATEONLY,

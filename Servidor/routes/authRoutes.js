@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     if (!validPass)
       return res.status(400).send("Usuario o contraseña equivocados");
     //Creamos un token con JSON Web Token
-    const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
+    const token = jwt.sign({ id: user.id }, process.env.REACT_APP_Secret_token);
     //Enviamos el token
     return res.send(token);
   } catch (error) {
@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//Registro de Admins, solo un admin puede registrar a otro
+//Registro de Admins
 router.post("/registerAdmin", async (req, res) => {
   try {
     const emailValid = await usuarios.findOne({
