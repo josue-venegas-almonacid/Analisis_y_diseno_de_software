@@ -104,7 +104,7 @@ class MiPerfil extends Component {
                   <div className="d-flex flex-column align-items-center text-center">
                     {this.state.data.map(usuario=>{return(
                             <div>
-                                <img src={"https://avatars.dicebear.com/api/initials/" + usuario.nombre + ".svg"} alt="Foto de perfil" className="rounded-circle" width="150"/>
+                                <img src={"https://api.dicebear.com/7.x/initials/svg?seed=" + usuario.nombre} alt="Foto de perfil" className="rounded-circle" width="150"/>
                                 <div className="mt-3">
                                     <h4>{usuario.nombre}</h4>
                                     <button className="btn btn-primary mt-2" onClick={()=>{this.seleccionarUsuario(usuario); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/> Editar perfil</button>
