@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     if (!validPass)
       return res.status(400).send("Usuario o contraseña equivocados");
     //Creamos un token con JSON Web Token
-    const token = jwt.sign({ id: user.id }, process.env.REACT_APP_Secret_token);
+    const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN);
     //Enviamos el token
     return res.send(token);
   } catch (error) {

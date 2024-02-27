@@ -98,10 +98,12 @@ router.put("/posponer/:id", verifySign, async (req, res, next) => {
       }
     );
     req.id_consulta = id,
-    res.status(200).send("Consulta pospuesta con éxito");
+    console.log("Consulta pospuesta con éxito");
+    //res.status(200).send("Consulta pospuesta con éxito");
     next();
   } catch (error) {
-    res.status(400).send(error);
+    console.log(error);
+    //res.status(400).send(error);
   }
 },
 EmailCtrl.sendEmailPosponer
@@ -149,10 +151,12 @@ router.put("/cancelar/:id",verifySign, async (req, res, next) => {
       }
     );
     req.id_consulta = id,
-    res.status(200).send("Consulta cancelada exitosamente");
+    console.log("Consulta cancelada exitosamente")
+    //res.status(200).send("Consulta cancelada exitosamente");
     next();
   } catch (error) {
-    res.status(400).send(error);
+    console.log(error);
+    //res.status(400).send(error);
   }
 }, EmailCtrl.sendEmailCancelar //Se hace envío del mail
 );

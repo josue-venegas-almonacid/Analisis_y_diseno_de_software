@@ -3,7 +3,6 @@ const { talleres } = require("../models");
 const { usuarios } = require("../models");
 const { usuariostalleres } = require('../models');
 const verifySign = require("../utils/verifyToken");
-const EmailCtrl = require('../utils/mailController');
 
 //Ruta para ver todas los talleres que se ha inscrito un usuario
 router.get("/", verifySign, async (req, res) => {

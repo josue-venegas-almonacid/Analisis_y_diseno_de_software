@@ -176,9 +176,11 @@ router.put("/editar/:id", async (req, res, next) => {
         req.email = usuario.email;
         next();
       };
-      res.status(200).send("Consulta editada");
+      console.log("Consulta editada")
+      //res.status(200).send("Consulta editada");
     } catch (error) {
-      res.status(400).send(error);
+      console.log(error);
+      //res.status(400).send(error);
     }
   },
   EmailCtrl.sendEmailUpdate
@@ -292,10 +294,12 @@ router.put("/addlink/:id", async (req, res, next) => {
         },
       }
     );
-    res.status(200).send("Link agregado con éxito");
+    console.log("Link agregado con éxito");
+    //res.status(200).send("Link agregado con éxito");
     next();
   } catch (error) {
-    res.status(400).send(error);
+    console.log(error);
+    //res.status(400).send(error);
   }
 }, EmailCtrl.sendEmailLink);
 

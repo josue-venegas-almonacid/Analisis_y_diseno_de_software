@@ -1,23 +1,13 @@
-const nodemailer = require("nodemailer"); // email sender function
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-//Añadimos los datos de la cuenta que envía los correos
-const servicio = "Gmail";
-const correoAdministracion = "admnistracionbbymami@gmail.com"; //Correo que se encarga de enviar todos los mails
-const correoAdmin = "josue.venegas@sansano.usm.cl"; //Correo de la Nutricionista que le informa de los cambios q hagan los usuarios
-const passAdmin = "Zk/gd$8qJvHbOd}IW.a09%v[s>6z6N";
-const transporter = nodemailer.createTransport({
-  service: servicio,
-  auth: {
-    user: correoAdministracion,
-    pass: passAdmin,
-  },
-});
+const correoNutricionista = process.env.CORREO_NUTRICIONISTA;
 
 //Enviar Mail a usuarios cuando admin edita la info de una consulta
 exports.sendEmailUpdate = function (req, res) {
   //Definimos el mail a enviar
   var mailOptions = {
-    from: "Remitente",
+    from: correoNutricionista,
     to: req.email,
     subject: "Información Consulta ID: " + req.id_consulta,
     text:
@@ -29,22 +19,22 @@ exports.sendEmailUpdate = function (req, res) {
       req.body.hora,
   };
   // Enviamos el email
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send(500, error);
-    } else {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
+  sgMail
+  .send(mailOptions)
+  .then(() => {
+    console.log('Email sent')
+    res.status(200).send({message: "Email enviado"})
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 };
 
 //Enviar Mail a usuarios cuando el admin añade el link de una consulta
 exports.sendEmailLink = function (req, res) {
   //Definimos el mail a enviar
   var mailOptions = {
-    from: "Remitente",
+    from: correoNutricionista,
     to: req.email,
     subject: "Información Consulta ID: " + req.id_consulta,
     text:
@@ -54,23 +44,23 @@ exports.sendEmailLink = function (req, res) {
       req.body.link,
   };
   // Enviamos el email
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send(500, error);
-    } else {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
+  sgMail
+  .send(mailOptions)
+  .then(() => {
+    console.log('Email sent')
+    res.status(200).send({message: "Email enviado"})
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 };
 
 //Enviar Mail al Correo del Admin cuando un usuario pospone una consulta agendada
 exports.sendEmailPosponer = function (req, res) {
   //Definimos el mail a enviar
   var mailOptions = {
-    from: "Remitente",
-    to: correoAdmin,
+    from: correoNutricionista,
+    to: correoNutricionista,
     subject: "Información Consulta ID: " + req.id_consulta,
     text:
       "Estimado/a Administrador el usuario de ID: " +
@@ -81,23 +71,23 @@ exports.sendEmailPosponer = function (req, res) {
       req.body.hora,
   };
   // Enviamos el email
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send(500, error);
-    } else {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
+  sgMail
+  .send(mailOptions)
+  .then(() => {
+    console.log('Email sent')
+    res.status(200).send({message: "Email enviado"})
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 };
 
 //Enviar Mail al Correo del Admin cuando un usuario cancela una consulta agendada
 exports.sendEmailCancelar = function (req, res) {
   //Definimos el mail a enviar
   var mailOptions = {
-    from: "Remitente",
-    to: correoAdmin,
+    from: correoNutricionista,
+    to: correoNutricionista,
     subject: "Información Consulta ID: " + req.id_consulta,
     text:
       "Estimado/a Administrador el usuario de ID: " +
@@ -105,13 +95,13 @@ exports.sendEmailCancelar = function (req, res) {
       " ha cancelado su consulta",
   };
   // Enviamos el email
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send(500, error);
-    } else {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
+  sgMail
+  .send(mailOptions)
+  .then(() => {
+    console.log('Email sent')
+    res.status(200).send({message: "Email enviado"})
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 };

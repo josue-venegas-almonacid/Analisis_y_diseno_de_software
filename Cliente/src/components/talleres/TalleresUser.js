@@ -112,7 +112,7 @@ class TalleresUser extends Component {
                 <div className="card-body">
                   <div className="d-flex flex-column align-items-center text-center">
                     <div>
-                        <img src={"https://avatars.dicebear.com/api/initials/" + taller.nombre + ".svg"} alt="Foto de perfil" className="rounded-circle" width="150"/>
+                        <img src={"https://api.dicebear.com/7.x/initials/svg?seed=" + taller.nombre} alt="Foto de perfil" className="rounded-circle" width="150"/>
                         <div className="mt-3">
                             <h4>{taller.nombre}</h4>
                             <hr></hr>

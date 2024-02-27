@@ -11,4 +11,4 @@ Matías Carvajal, 201873558-0 / Marcelo Gangas, 201873589-2 / Josué Venegas, 20
 
 
 # Notas
-- Para recibir el correo, cambiar el valor de correoAdmin en Servidor/utils/mailController.js
+- Para recibir el correo dirigido a administradores, cambiar el valor de CORREO_NUTRICIONISTA en .env. Asegúrese de que el correo sea un Sender verificado en SendGrid

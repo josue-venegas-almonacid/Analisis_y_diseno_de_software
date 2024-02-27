@@ -5,7 +5,7 @@ function verifySign(req, res, next) {
   const token = req.header("auth-token");
   if (!token) return res.status(401).send("Por favor inicia sesión");
   try {
-    const payload = jwt.verify(token, process.env.REACT_APP_Secret_token);
+    const payload = jwt.verify(token, process.env.SECRET_TOKEN);
     req.user = payload;
     next();
   } catch (error) {
