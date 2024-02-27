@@ -20,7 +20,6 @@ Se ha comprobado el correcto funcionamiento del proyecto con las siguientes vers
 - NodeJS 20.11.1
 - NPM 10.2.4
 - PostgreSQL 16.2
-- Visual Studio Code 1.86.2
 
 # Uso
 1. Base de datos
